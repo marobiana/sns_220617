@@ -82,3 +82,42 @@
 		</div> <%--// 타임라인 영역 닫기  --%>
 	</div>
 </div>
+
+<script>
+$(document).ready(function() {
+	// 파일 업로드 이미지(a) 클릭 => 파일 선택 창이 떠야함
+	$('#fileUploadBtn').on('click', function(e) {
+		e.preventDefault();  // a태그의 기본 동작 멈춤(화면이 위로 올라가는 것 방지)
+		$('#file').click(); // input file을 클릭한 것과 같은 효과
+	});
+	
+	// 사용자가 파일업로드를 했을 때, 유효성 확인 및 업로드 된 파일 이름 노출
+	$('#file').on('change', function(e) {
+		//alert("체인지");
+		
+		let fileName = e.target.files[0].name; // ex) cat-g4c8e76014_640.jpg
+		//alert(fileName);
+		let arr = fileName.split('.');
+		
+		// 확장자 유효성 확인
+		if (arr.length < 2 || 
+				(arr[arr.length - 1] != 'gif'
+						&& arr[arr.length - 1] != 'png'
+							&& arr[arr.length - 1] != 'jpg'
+								&& arr[arr.length - 1] != 'jpeg')) {
+			alert("이미지 파일만 업로드 할 수 있습니다.");
+			$(this).val(''); // 파일 태그에 실제 파일 제거
+			$('#fileName').text(''); // 파일 이름 비우기
+			return;
+		}
+		
+		// 상자에 업로드 된 이름 노출
+		$('#fileName').text(fileName);
+	});
+});
+</script>
+
+
+
+
+
