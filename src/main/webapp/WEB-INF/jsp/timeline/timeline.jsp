@@ -65,20 +65,21 @@
 				</div>
 				<div class="card-comment-list m-2">
 					<%-- 댓글 목록 --%>
+					<c:forEach items="${card.commentList}" var="commentView">
 					<div class="card-comment m-1">
-						<span class="font-weight-bold">댓글쓴이:</span>
-						<span>댓글 내용</span>
+						<span class="font-weight-bold">${commentView.user.loginId}:</span>
+						<span>${commentView.comment.content}</span>
 						
 						<%-- 댓글 삭제 버튼 --%>
 						<a href="#" class="commentDelBtn">
 							<img src="https://www.iconninja.com/files/603/22/506/x-icon.png" width="10px" height="10px">
 						</a>
 					</div>
-					
+					</c:forEach>
 					<%-- 댓글 쓰기 --%>
 					<div class="comment-write d-flex border-top mt-2">
 						<input type="text" class="form-control border-0 mr-2" placeholder="댓글 달기"/> 
-						<button type="button" class="comment-btn btn btn-light" data-post-id="${post.id}">게시</button>
+						<button type="button" class="comment-btn btn btn-light" data-post-id="${card.post.id}">게시</button>
 					</div>
 				</div>
 			</div> <%--// 카드1 닫기 --%>
