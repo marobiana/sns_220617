@@ -14,4 +14,8 @@ public class LikeBO {
 	public boolean existLike(int postId, int userId) {
 		return likeDAO.existLike(postId, userId);
 	}
+	
+	public int getLikeCountByPostId(int postId) {
+		return likeDAO.selectLikeCountByPostId(postId);
+	}
 }
