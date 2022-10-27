@@ -45,4 +45,12 @@ public class CardView {
 	public void setCommentList(List<CommentView> commentList) {
 		this.commentList = commentList;
 	}
+
+	public boolean isFilledLike() {
+		return filledLike;
+	}
+
+	public void setFilledLike(boolean filledLike) {
+		this.filledLike = filledLike;
+	}
 }

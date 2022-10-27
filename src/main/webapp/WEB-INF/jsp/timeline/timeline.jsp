@@ -46,9 +46,12 @@
 				<%-- 좋아요 --%>
 				<div class="card-like m-3">
 					<a href="#" class="like-btn">
-						<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" width="18px" height="18px" alt="empty heart">
+					<c:if test="${card.filledLike eq true}">
 						<img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" width="18px" height="18px" alt="filled heart">
-						
+					</c:if>
+					<c:if test="${card.filledLike eq false}">
+						<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" width="18px" height="18px" alt="empty heart">
+					</c:if>
 						좋아요 10개
 					</a>
 				</div>
