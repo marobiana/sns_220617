@@ -5,6 +5,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LikeDAO {
+	
+	public int selectLikeCountByPostIdOrUserId(
+			@Param("postId") int postId, 
+			@Param("userId") Integer userId);
 
 	public boolean existLike(
 			@Param("postId") int postId, 
