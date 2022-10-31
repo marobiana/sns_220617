@@ -276,9 +276,24 @@ $(document).ready(function() {
 		e.preventDefault();
 		
 		let postId = $('#modal').data('post-id');
-		alert(postId);
+		//alert(postId);
 		
 		// ajax 글삭제
+		$.ajax({
+			type:"delete"
+			, url:"/post/delete"
+			, data: {"postId":postId}
+			, success: function(data) {
+				if (data.result == "success") {
+					location.reload();
+				} else {
+					alert(data.errorMessage);
+				}
+			}
+			, error: function(e) {
+				alert("삭제하는데 실패했습니다. 관리자에게 문의해주세요.");
+			}
+		});
 	});
 	
 }); //-- ready 끝
