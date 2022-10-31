@@ -12,5 +12,9 @@
 			<span class="text-white">${userName}님 안녕하세요</span>
 			<a href="/user/sign_out" class="ml-2 text-white font-weight-bold">로그아웃</a>
 		</c:if>
+		<%-- 비로그인 시 로그인 노출 --%>
+		<c:if test="${empty userName}">
+			<a href="/user/sign_in_view" class="text-white font-weight-bold">로그인</a>
+		</c:if>
 	</div>
 </div>

@@ -31,4 +31,23 @@ public class PostBO {
 	public List<Post> getPostList() {
 		return postDAO.selectPostList();
 	}
+	
+	public void deletePost(int postId, int userId) {
+		// 기존글 가져오기
+		
+		// 이미지가 있으면 이미지 삭제
+		
+		// 글 삭제
+		
+		// 좋아요들 삭제
+		
+		// 댓글들 삭제
+	}
 }
+
+
+
+
+
+
+
