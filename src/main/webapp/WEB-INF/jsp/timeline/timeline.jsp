@@ -45,7 +45,7 @@
 				
 				<%-- 좋아요 --%>
 				<div class="card-like m-3">
-					<a href="#" class="like-btn">
+					<a href="#" class="like-btn" data-user-id="${userId}" data-post-id="${card.post.id}">
 					<c:if test="${card.filledLike eq true}">
 						<img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" width="18px" height="18px" alt="filled heart">
 					</c:if>
@@ -204,6 +204,34 @@ $(document).ready(function() {
 			,error: function(jqXHR, textStatus, errorThrown) {
 				var errorMsg = jqXHR.responseJSON.status;
 				alert(errorMsg + ":" + textStatus);
+			}
+		});
+	});
+	
+	// 좋아요/해제 toggle
+	$('.like-btn').on('click', function(e) {
+		e.preventDefault();
+		
+		let userId = $(this).data('user-id');
+		//alert(userId);
+		if (userId == '') {
+			alert("로그인을 해주세요");
+			return;
+		}
+		
+		let postId = $(this).data('post-id');
+		//alert(postId);
+		$.ajax({
+			url:"/like/" + postId
+			, success:function(data) {
+				if (data.code == 100) {
+					location.reload(true);
+				} else {
+					alert(data.errorMessage);	
+				}
+			}
+			, error: function(e) {
+				alert("좋아요/해제 하는데 실패했습니다.");
 			}
 		});
 	});

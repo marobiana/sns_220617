@@ -1,6 +1,5 @@
 package com.sns.like.bo;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +13,13 @@ public class LikeBO {
 	
 	public void likeToggle(int postId, int userId) {
 		// 좋아요 있는지 확인
-		
-		// 있으면 제거
-		// 없으면 추가
+		if (getLikeCountByPostIdOrUserId(postId, userId) > 0) {
+			// 있으면 제거
+			likeDAO.deleteLikeByPostIdUserId(postId, userId);
+		} else {
+			// 없으면 추가
+			likeDAO.insertLike(postId, userId);
+		}
 	}
 	
 	public int getLikeCountByPostIdOrUserId(int postId, Integer userId) {
