@@ -16,7 +16,8 @@ public class FileManagerService {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	// 실제 이미지가 저장될 경로(서버)
-	public static final String FILE_UPLOAD_PATH = "D:\\shinboram\\sns\\workspace\\images/";
+	public static final String FILE_UPLOAD_PATH = "/home/ec2-user/images/";
+//	public static final String FILE_UPLOAD_PATH = "D:\\shinboram\\sns\\workspace\\images/";
 
 	// input: 멀티파트 파일, userLoginId
 	// output: 이미지 패스
